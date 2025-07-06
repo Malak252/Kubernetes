@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-mongo-express
+  namespace: mongo-db
+spec:
+  podSelector:
+    matchLabels:
+      app: mongodb
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: mongo-express
+  policyTypes:
+    - Ingress
+
