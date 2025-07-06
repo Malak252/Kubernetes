@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: coolest
+  template:
+    metadata:
+      labels:
+        app: coolest
+    spec:
+      containers:
+      - name: nginx
+        image: TheCoolestMalak/coolest-nginx
+
